@@ -19,7 +19,10 @@ describe('OperationComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should emit value when button is clicked', () => {
+    const button = fixture.debugElement.nativeElement.querySelector('button');
+    const spy = spyOn(component.operation, 'emit').and.callThrough();
+    button.click();
+    expect(spy).toHaveBeenCalledWith(1);
   });
 });
